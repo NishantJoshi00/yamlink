@@ -56,7 +56,7 @@ func (state *State) magicHandler(w http.ResponseWriter, r *http.Request) {
 	resolve, err := HttpPathLookup(r.URL.Path, state.PathFinder)
 
 	if err != nil {
-		Logger.Error("Failed to resolve path", err)
+		Logger.Error("Failed to resolve path", "error", err)
 		http.Error(w, "Not Found", http.StatusNotFound)
 		return
 	}
@@ -64,7 +64,7 @@ func (state *State) magicHandler(w http.ResponseWriter, r *http.Request) {
 	Logger.Debug("Resolved path:", "answer", resolve)
 
 	// redirect to the URL
-	http.Redirect(w, r, resolve, http.StatusTemporaryRedirect)
+	http.Redirect(w, r, resolve, http.StatusFound)
 	return
 }
 
@@ -77,7 +77,7 @@ func (state *State) refresh(map_file string, refresh_interval int) {
 
 		changed, err := hasFileChanged(map_file, state.lastModified)
 		if err != nil {
-			Logger.Error("Failed to check file changes", err)
+			Logger.Error("Failed to check file changes", "error", err)
 			continue
 		}
 
@@ -85,7 +85,7 @@ func (state *State) refresh(map_file string, refresh_interval int) {
 			Logger.Info("File changed, reloading")
 			err := state.load(map_file)
 			if err != nil {
-				Logger.Error("Failed to load file", err)
+				Logger.Error("Failed to load file", "error", err)
 				continue
 			}
 		}
