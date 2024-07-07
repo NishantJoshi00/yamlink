@@ -53,21 +53,3 @@ The server requires 2 configuration files to run:
   example: https://example.com
   ```
 
-## **Contribution**
-
-We welcome contributions to Yamlink! If you would like to contribute, please follow these steps:
-
-1. Fork this repository.
-2. Create a new branch for your feature or bug fix.
-3. Write tests for your changes using Go's built-in testing framework.
-4. Implement your changes and ensure that they pass the tests.
-5. Submit a pull request with a clear description of your changes.
-
-Some areas where you can contribute include:
-
-- Improving performance
-- Adding new features (e.g., support for other data formats)
-- Enhancing documentation
-- Fixing bugs
-
-Please note that we follow the Go Community Code of Conduct and appreciate respectful contributions.
