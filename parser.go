@@ -38,7 +38,7 @@ func ReadFile(path string) (interface{}, error) {
 	return ParseYaml(file)
 }
 
-func HttpPathLookup(path string, m interface{}) (string, error) {
+func PathLookup(path string, m interface{}) (string, error) {
 
 	keys := strings.Split(path, "/")
 

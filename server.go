@@ -53,7 +53,7 @@ func (state *State) magicHandler(w http.ResponseWriter, r *http.Request) {
 
 	Logger.Info("Request received", "query", r.URL.Path)
 
-	resolve, err := HttpPathLookup(r.URL.Path, state.PathFinder)
+	resolve, err := PathLookup(r.URL.Path, state.PathFinder)
 
 	if err != nil {
 		Logger.Error("Failed to resolve path", "error", err)

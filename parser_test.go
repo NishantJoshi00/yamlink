@@ -41,7 +41,7 @@ func TestPathDepth1(t *testing.T) {
 		t.Errorf("Error parsing yaml: %v", err)
 	}
 
-	val, err := yamlink.HttpPathLookup("key1", m)
+	val, err := yamlink.PathLookup("key1", m)
 
 	if err != nil {
 		t.Errorf("Error looking up path: %v", err)
@@ -64,7 +64,7 @@ func TestPathDepth2Map(t *testing.T) {
 		t.Errorf("Error parsing yaml: %v", err)
 	}
 
-	val, err := yamlink.HttpPathLookup("key1/key2", m)
+	val, err := yamlink.PathLookup("key1/key2", m)
 
 	if err != nil {
 		t.Errorf("Error looking up path: %v", err)
@@ -87,7 +87,7 @@ func TestPathDepth2Array(t *testing.T) {
 		t.Errorf("Error parsing yaml: %v", err)
 	}
 
-	val, err := yamlink.HttpPathLookup("key1/0", m)
+	val, err := yamlink.PathLookup("key1/0", m)
 
 	if err != nil {
 		t.Errorf("Error looking up path: %v", err)
@@ -111,7 +111,7 @@ func TestPathDepth3ArrayMap(t *testing.T) {
 		t.Errorf("Error parsing yaml: %v", err)
 	}
 
-	val, err := yamlink.HttpPathLookup("key1/1/key2", m)
+	val, err := yamlink.PathLookup("key1/1/key2", m)
 
 	if err != nil {
 		t.Errorf("Error looking up path: %v", err)
@@ -135,7 +135,7 @@ func TestUnknownPathDepth1(t *testing.T) {
 		t.Errorf("Error parsing yaml: %v", err)
 	}
 
-	_, err = yamlink.HttpPathLookup("key1/1/key3", m)
+	_, err = yamlink.PathLookup("key1/1/key3", m)
 
 	if err == nil {
 		t.Errorf("Expected error, got nil")
@@ -155,7 +155,7 @@ func TestUnknownPathDepth2(t *testing.T) {
 		t.Errorf("Error parsing yaml: %v", err)
 	}
 
-	_, err = yamlink.HttpPathLookup("key1/2/key2", m)
+	_, err = yamlink.PathLookup("key1/2/key2", m)
 
 	if err == nil {
 		t.Errorf("Expected error, got nil")
