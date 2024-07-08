@@ -42,6 +42,10 @@ func HttpPathLookup(path string, m interface{}) (string, error) {
 
 	keys := strings.Split(path, "/")
 
+	if keys[len(keys)-1] == "" {
+		keys = keys[:len(keys)-1]
+	}
+
 	return lookup(keys[1:], m)
 }
 
