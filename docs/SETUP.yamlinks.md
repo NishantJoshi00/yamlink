@@ -1,5 +1,3 @@
-Here's a rewritten version of your setup that's easier for others to follow:
-
 **Step 1: Install Yamlink**
 
 - Download and install the `yamlink` executable in a directory like `/usr/bin/`.
