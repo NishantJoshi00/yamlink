@@ -11,8 +11,10 @@ if test (count $argv) -eq 2 -a -f $argv[1] -a -f $argv[2]
     set argv (commandline)
     # check if argv has s/ at the beginning
     if test (string match -r '^s/' $argv[1])
-      set query (string replace -r '^s/' '/' $argv[1])
-      commandline -r (CONFIG_FILE=$config_file $exec_file $query)
+      set query (string replace -r '^s(\S*).*' '$1' $argv[1])
+      set args (string replace -r '^s\S*(.*)' '$1' $argv[1])
+      set output (CONFIG_FILE=$config_file $exec_file $query)
+      commandline -r (string join '' $output $args)
     end
 
     commandline -f execute

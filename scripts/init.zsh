@@ -26,8 +26,9 @@ if [[ $__ERROR == false ]]; then
     if [[ "$BUFFER" == "s/"* ]]; then
   
       # here the query is `/.*` e.g ( if the line looks like `s/hello/world` then the query is `/hello/world` )
-      query=$(echo $BUFFER | sed 's/^s\(\/.*\)/\1/')
-      BUFFER="$(CONFIG_FILE=$CONFIG $EXE $query)"
+      query=$(echo $BUFFER | sed 's/^s\(\/\S*\).*/\1/')
+      args=$(echo $BUFFER | sed 's/^s\/\S*\(.*\)/\1/')
+      BUFFER="$(CONFIG_FILE=$CONFIG $EXE $query)$args"
     fi
   
     zle .accept-line
