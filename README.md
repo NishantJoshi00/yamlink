@@ -1,55 +1,124 @@
-# **Yamlink**
+# Yamlink
 
-Yamlink is a simple URL mapping and redirecting system that can be used to map URLs in a YAML configuration file. The tool can be used to create custom URLs for internal or external use.
+A fast, lightweight URL mapping and redirection system that dynamically manages URL shortcuts through YAML configuration files. Perfect for creating and managing custom URL shorteners for internal tools, documentation, or any web resources.
 
-**Features**
+## Description
 
-- Supports mapping URLs with depth up to 3 (e.g., `key1/0`, `key1/1/key2`)
-- Can handle arrays of values in the YAML configuration file
-- Automatically refreshes the map when the underlying YAML file changes
+Yamlink solves the common challenge of managing and accessing numerous URLs within an organization or personal workflow by:
 
-## **Example Usage**
+- Creating human-readable shortcuts for complex URLs
+- Supporting hierarchical URL organization through YAML
+- Providing real-time configuration updates without service restart
+- Offering both CLI and server components for flexible usage
 
-In this example, we have a YAML configuration file that maps URLs to their corresponding values:
+## Installation
 
-```yaml
-key1:
-  - example.com
-```
+1. **Prerequisites**
 
-Using the `yamlink.ParseYaml` function, we can parse this YAML file and use it to look up URL paths. For instance, if we request the path `/key1/0`, Yamlink will return `example.com`.
+   - Go 1.22.4 or higher
+   - Make (optional, for using Makefile commands)
 
-## **Building and Running**
+2. **Build from Source**
 
-To build and run Yamlink, simply execute the following commands:
+   ```bash
+   # Clone the repository
+   git clone https://github.com/NishantJoshi00/yamlink
+   cd yamlink
 
-```bash
-go build server.go
-./yamlink
-```
+   # Build the binaries
+   go build ./cmd/yamlink    # Server component
+   go build ./cmd/shelinks   # CLI component
+   ```
 
-This will start the Yamlink server, which can be accessed at `http://localhost:8080`. The server supports two endpoints:
+3. **Install System-wide (Optional)**
+   ```bash
+   # Move binaries to system path
+   sudo mv yamlink /usr/local/bin/
+   sudo mv shelinks /usr/local/bin/
+   ```
 
-- `/`: Returns a health check response
-- `<path>`: Redirects to the corresponding URL value in the YAML configuration file
+## Usage
 
-## **Configuration**
+### Server Mode (yamlink)
 
-The server requires 2 configuration files to run:
+1. **Create Configuration Files**
 
-- `config.yaml`: Contains the server configuration
-  This file should be in the following format:
-  ```yaml
-  host: localhost
-  port: 8080
-  map_file: map.yaml
-  refresh_interval: 5 # in seconds
-  ```
-- `map.yaml`: Contains the URL mapping
-  This file should be in the following format:
-  ```yaml
-  key1:
-    - https://example.com
-  example: https://example.com
-  ```
+   ```yaml
+   # config.yaml
+   host: localhost
+   port: 8080
+   map_file: map.yaml
+   refresh_interval: 5 # seconds
+   ```
 
+   ```yaml
+   # map.yaml
+   github:
+     profile: https://github.com/NishantJoshi00
+   docs:
+     - https://docs.example.com
+   ```
+
+2. **Start the Server**
+
+   ```bash
+   CONFIG_FILE=config.yaml ./yamlink
+   ```
+
+3. **Access URLs**
+   - Visit `http://localhost:8080/github/profile`
+   - Visit `http://localhost:8080/docs/0`
+
+### CLI Mode (shelinks)
+
+1. **Set up Configuration**
+
+   ```yaml
+   # ~/.shelinks.yaml
+   gs: git status
+   gp: git push
+   ```
+
+2. **Use in Shell**
+
+   ```bash
+   # For ZSH
+   source scripts/init.zsh /path/to/shelinks ~/.shelinks.yaml
+
+   # For Fish
+   source scripts/init.fish /path/to/shelinks ~/.shelinks.yaml
+   ```
+
+3. **Use Shortcuts**
+   ```bash
+   s/gs    # Expands to 'git status'
+   s/gp    # Expands to 'git push'
+   ```
+
+## Features
+
+- **Dynamic URL Mapping**: Support for nested URL structures up to 3 levels deep
+- **Real-time Updates**: Configuration changes are automatically detected and applied
+- **Multiple Access Methods**:
+  - Server mode for web-based access
+  - CLI mode for shell integration
+- **Flexible Configuration**:
+  - Support for both single URLs and arrays of URLs
+  - Custom refresh intervals for configuration updates
+- **Shell Integration**: Native support for zsh and fish shells
+- **Logging**: Structured JSON logging with configurable log levels
+
+## Contributing Guidelines
+
+1. **Issue First**: Create or find an issue before starting work
+2. **Issue Tags**: Use descriptive tags:
+   - [BUG] for bug reports
+   - [FEATURE] for feature requests
+   - [DOCS] for documentation improvements
+3. **Work Assignment**: Don't work on issues already assigned to others
+4. **Testing**: Ensure all tests pass by running `make test`
+5. **Code Style**: Follow Go standard formatting guidelines
+
+## License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
