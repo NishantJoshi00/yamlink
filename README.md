@@ -2,6 +2,8 @@
 
 A fast, lightweight URL mapping and redirection system that dynamically manages URL shortcuts through YAML configuration files. Perfect for creating and managing custom URL shorteners for internal tools, documentation, or any web resources.
 
+[![asciicast](https://asciinema.org/a/vmPkgMpJbqfnVwiliutXswU92.svg)](https://asciinema.org/a/vmPkgMpJbqfnVwiliutXswU92)
+
 ## Description
 
 Yamlink solves the common challenge of managing and accessing numerous URLs within an organization or personal workflow by:
@@ -71,7 +73,6 @@ Yamlink solves the common challenge of managing and accessing numerous URLs with
 
 ### CLI Mode (shelinks)
 
-[![asciicast](https://asciinema.org/a/vmPkgMpJbqfnVwiliutXswU92.svg)](https://asciinema.org/a/vmPkgMpJbqfnVwiliutXswU92)
 
 1. **Set up Configuration**
 
