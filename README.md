@@ -71,6 +71,8 @@ Yamlink solves the common challenge of managing and accessing numerous URLs with
 
 ### CLI Mode (shelinks)
 
+[![asciicast](https://asciinema.org/a/vmPkgMpJbqfnVwiliutXswU92.svg)](https://asciinema.org/a/vmPkgMpJbqfnVwiliutXswU92)
+
 1. **Set up Configuration**
 
    ```yaml
