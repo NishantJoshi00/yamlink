@@ -1,6 +1,6 @@
 <div align="center">
   <picture>
-    <img src="./assets/image.jpeg" width="100%" height="200" style="object-fit: cover; object-position: center 25%;" />
+    <img src="./assets/image.jpeg" width="100%" style="max-height: 200px; object-fit: cover; object-position: center 25%;" />
   </picture>
 </div>
 
