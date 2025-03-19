@@ -1,5 +1,7 @@
 <div align="center">
-  <img src="./assets/image.jpeg" width="100%" />
+  <picture>
+    <img src="./assets/image.jpeg" width="100%" height="200" style="object-fit: cover; object-position: center 25%;" />
+  </picture>
 </div>
 
 # Yamlink
