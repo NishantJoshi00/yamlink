@@ -1,5 +1,5 @@
 <div align="center">
-  <img src="./assets/image.jpeg" width="250" />
+  <img src="./assets/image.jpeg" width="100%" />
 </div>
 
 # Yamlink
