@@ -1,43 +1,48 @@
-# Yamlink
+# Yamlink <img src="https://raw.githubusercontent.com/NishantJoshi00/yamlink/main/assets/logo.png" align="right" width="128" />
 
 A fast, lightweight URL mapping and redirection system that dynamically manages URL shortcuts through YAML configuration files. Perfect for creating and managing custom URL shorteners for internal tools, documentation, or any web resources.
 
+[![GoDoc](https://godoc.org/github.com/NishantJoshi00/yamlink?status.svg)](https://godoc.org/github.com/NishantJoshi00/yamlink)
+[![Go Report Card](https://goreportcard.com/badge/github.com/NishantJoshi00/yamlink)](https://goreportcard.com/report/github.com/NishantJoshi00/yamlink)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+
 [![asciicast](https://asciinema.org/a/vmPkgMpJbqfnVwiliutXswU92.svg)](https://asciinema.org/a/vmPkgMpJbqfnVwiliutXswU92)
 
-## Description
+## Features
 
-Yamlink solves the common challenge of managing and accessing numerous URLs within an organization or personal workflow by:
-
-- Creating human-readable shortcuts for complex URLs
-- Supporting hierarchical URL organization through YAML
-- Providing real-time configuration updates without service restart
-- Offering both CLI and server components for flexible usage
+- 🔗 **Human-readable Shortcuts** - Create memorable shortcuts for complex URLs
+- 🌲 **Hierarchical Organization** - Support for nested URL structures through YAML
+- 🔄 **Real-time Updates** - Configuration changes detected automatically without restart
+- 🧩 **Flexible Deployment** - Use as a server or integrate with your shell
+- 📊 **Multiple Access Methods** - Server mode for web access, CLI mode for shell integration
+- 🐚 **Shell Integration** - Native support for zsh and fish shells
 
 ## Installation
 
-1. **Prerequisites**
+### Prerequisites
 
-   - Go 1.22.4 or higher
-   - Make (optional, for using Makefile commands)
+- Go 1.22.4 or higher
+- Make (optional, for using Makefile commands)
 
-2. **Build from Source**
+### Build from Source
 
-   ```bash
-   # Clone the repository
-   git clone https://github.com/NishantJoshi00/yamlink
-   cd yamlink
+```bash
+# Clone the repository
+git clone https://github.com/NishantJoshi00/yamlink
+cd yamlink
 
-   # Build the binaries
-   go build ./cmd/yamlink    # Server component
-   go build ./cmd/shelinks   # CLI component
-   ```
+# Build the binaries
+go build ./cmd/yamlink    # Server component
+go build ./cmd/shelinks   # CLI component
+```
 
-3. **Install System-wide (Optional)**
-   ```bash
-   # Move binaries to system path
-   sudo mv yamlink /usr/local/bin/
-   sudo mv shelinks /usr/local/bin/
-   ```
+### Install System-wide
+
+```bash
+# Move binaries to system path
+sudo mv yamlink /usr/local/bin/
+sudo mv shelinks /usr/local/bin/
+```
 
 ## Usage
 
@@ -73,7 +78,6 @@ Yamlink solves the common challenge of managing and accessing numerous URLs with
 
 ### CLI Mode (shelinks)
 
-
 1. **Set up Configuration**
 
    ```yaml
@@ -98,18 +102,35 @@ Yamlink solves the common challenge of managing and accessing numerous URLs with
    s/gp    # Expands to 'git push'
    ```
 
-## Features
+## Detailed Configuration
 
-- **Dynamic URL Mapping**: Support for nested URL structures up to 3 levels deep
-- **Real-time Updates**: Configuration changes are automatically detected and applied
-- **Multiple Access Methods**:
-  - Server mode for web-based access
-  - CLI mode for shell integration
-- **Flexible Configuration**:
-  - Support for both single URLs and arrays of URLs
-  - Custom refresh intervals for configuration updates
-- **Shell Integration**: Native support for zsh and fish shells
-- **Logging**: Structured JSON logging with configurable log levels
+### Server Configuration Options
+
+| Option           | Description                                    | Default     |
+|------------------|------------------------------------------------|-------------|
+| host             | Hostname or IP to bind the server              | localhost   |
+| port             | Port to listen on                              | 8080        |
+| map_file         | Path to YAML file with URL mappings            | map.yaml    |
+| refresh_interval | Seconds between checking for config updates    | 5           |
+
+### URL Mapping Structure
+
+Yamlink supports a nested URL structure with up to 3 levels of depth:
+
+```yaml
+# Simple key-value mapping
+docs: https://docs.example.com
+
+# Nested mapping
+github:
+  profile: https://github.com/NishantJoshi00
+  repo: https://github.com/NishantJoshi00/yamlink
+
+# Array mapping
+tutorials:
+  - https://tutorial1.example.com
+  - https://tutorial2.example.com
+```
 
 ## Contributing Guidelines
 
@@ -125,3 +146,11 @@ Yamlink solves the common challenge of managing and accessing numerous URLs with
 ## License
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+---
+
+<div align="center">
+
+Built by Human, Documented by LLM.
+
+</div>
