@@ -1,8 +1,11 @@
-# Yamlink <img src="https://raw.githubusercontent.com/NishantJoshi00/yamlink/main/assets/logo.png" align="right" width="128" />
+<div align="center">
+  <img src="./assets/image.jpeg" width="250" />
+</div>
+
+# Yamlink
 
 A fast, lightweight URL mapping and redirection system that dynamically manages URL shortcuts through YAML configuration files. Perfect for creating and managing custom URL shorteners for internal tools, documentation, or any web resources.
 
-[![GoDoc](https://godoc.org/github.com/NishantJoshi00/yamlink?status.svg)](https://godoc.org/github.com/NishantJoshi00/yamlink)
 [![Go Report Card](https://goreportcard.com/badge/github.com/NishantJoshi00/yamlink)](https://goreportcard.com/report/github.com/NishantJoshi00/yamlink)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
