@@ -13,4 +13,4 @@ coverage: coverage.out
 	go tool cover -html=coverage.out
 
 run:
-	go run ./cmd/yamlink
+	go run ./cmd/waypoint

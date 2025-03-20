@@ -1,12 +1,14 @@
 <div align="center">
-  <img src="./assets/image.jpeg" width="250" />
+  <picture>
+    <img src="./assets/image.jpeg" width="100%" style="max-height: 200px; object-fit: cover; object-position: center 25%;" />
+  </picture>
 </div>
 
-# Yamlink
+# WayPoint
 
 A fast, lightweight URL mapping and redirection system that dynamically manages URL shortcuts through YAML configuration files. Perfect for creating and managing custom URL shorteners for internal tools, documentation, or any web resources.
 
-[![Go Report Card](https://goreportcard.com/badge/github.com/NishantJoshi00/yamlink)](https://goreportcard.com/report/github.com/NishantJoshi00/yamlink)
+[![Go Report Card](https://goreportcard.com/badge/github.com/NishantJoshi00/waypoint)](https://goreportcard.com/report/github.com/NishantJoshi00/waypoint)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
 [![asciicast](https://asciinema.org/a/vmPkgMpJbqfnVwiliutXswU92.svg)](https://asciinema.org/a/vmPkgMpJbqfnVwiliutXswU92)
@@ -31,25 +33,25 @@ A fast, lightweight URL mapping and redirection system that dynamically manages 
 
 ```bash
 # Clone the repository
-git clone https://github.com/NishantJoshi00/yamlink
-cd yamlink
+git clone https://github.com/NishantJoshi00/waypoint
+cd waypoint
 
 # Build the binaries
-go build ./cmd/yamlink    # Server component
-go build ./cmd/shelinks   # CLI component
+go build ./cmd/waypoint    # Server component
+go build ./cmd/wayshell   # CLI component
 ```
 
 ### Install System-wide
 
 ```bash
 # Move binaries to system path
-sudo mv yamlink /usr/local/bin/
-sudo mv shelinks /usr/local/bin/
+sudo mv waypoint /usr/local/bin/
+sudo mv wayshell /usr/local/bin/
 ```
 
 ## Usage
 
-### Server Mode (yamlink)
+### Server Mode (waypoint)
 
 1. **Create Configuration Files**
 
@@ -72,19 +74,19 @@ sudo mv shelinks /usr/local/bin/
 2. **Start the Server**
 
    ```bash
-   CONFIG_FILE=config.yaml ./yamlink
+   CONFIG_FILE=config.yaml ./waypoint
    ```
 
 3. **Access URLs**
    - Visit `http://localhost:8080/github/profile`
    - Visit `http://localhost:8080/docs/0`
 
-### CLI Mode (shelinks)
+### CLI Mode (wayshell)
 
 1. **Set up Configuration**
 
    ```yaml
-   # ~/.shelinks.yaml
+   # ~/.wayshell.yaml
    gs: git status
    gp: git push
    ```
@@ -93,10 +95,10 @@ sudo mv shelinks /usr/local/bin/
 
    ```bash
    # For ZSH
-   source scripts/init.zsh /path/to/shelinks ~/.shelinks.yaml
+   source scripts/init.zsh /path/to/wayshell ~/.wayshell.yaml
 
    # For Fish
-   source scripts/init.fish /path/to/shelinks ~/.shelinks.yaml
+   source scripts/init.fish /path/to/wayshell ~/.wayshell.yaml
    ```
 
 3. **Use Shortcuts**
@@ -118,7 +120,7 @@ sudo mv shelinks /usr/local/bin/
 
 ### URL Mapping Structure
 
-Yamlink supports a nested URL structure with up to 3 levels of depth:
+WayPoint supports a nested URL structure with up to 3 levels of depth:
 
 ```yaml
 # Simple key-value mapping
@@ -127,7 +129,7 @@ docs: https://docs.example.com
 # Nested mapping
 github:
   profile: https://github.com/NishantJoshi00
-  repo: https://github.com/NishantJoshi00/yamlink
+  repo: https://github.com/NishantJoshi00/waypoint
 
 # Array mapping
 tutorials:

@@ -7,7 +7,7 @@ import (
 	"os"
 	"strings"
 
-	"github.com/NishantJoshi00/yamlink"
+	"github.com/NishantJoshi00/waypoint"
 	"gopkg.in/yaml.v3"
 )
 
@@ -38,7 +38,7 @@ func logConfig() *slog.HandlerOptions {
 func main() {
 	lconfig := logConfig()
 
-	yamlink.Logger = slog.New(slog.NewJSONHandler(os.Stderr, lconfig))
+	waypoint.Logger = slog.New(slog.NewJSONHandler(os.Stderr, lconfig))
 
 	config_file, err1 := os.LookupEnv("CONFIG_FILE")
 
@@ -47,7 +47,7 @@ func main() {
 	}
 
 	if _, err := os.Stat(config_file); err != nil {
-		yamlink.Logger.Error("Failed while loading config file", "error", err)
+		waypoint.Logger.Error("Failed while loading config file", "error", err)
 	}
 
 	file, err := os.Open(config_file)
@@ -56,29 +56,29 @@ func main() {
 
 	decoder := yaml.NewDecoder(file)
 
-	var config yamlink.Config
+	var config waypoint.Config
 
 	err = decoder.Decode(&config)
 
 	if err != nil {
-		yamlink.Logger.Error("Failed while decoding config file", "error", err)
+		waypoint.Logger.Error("Failed while decoding config file", "error", err)
 		os.Exit(1)
 	}
 
-	yamlink.Logger.Info("Config file loaded successfully")
+	waypoint.Logger.Info("Config file loaded successfully")
 
-	server, err := yamlink.Init(&config)
+	server, err := waypoint.Init(&config)
 
 	if err != nil {
-		yamlink.Logger.Error("Failed while initializing server", "error", err)
+		waypoint.Logger.Error("Failed while initializing server", "error", err)
 	}
 
-	yamlink.Logger.Info(fmt.Sprintf("Starting server on %s:%d", config.Host, config.Port))
+	waypoint.Logger.Info(fmt.Sprintf("Starting server on %s:%d", config.Host, config.Port))
 
 	err = http.ListenAndServe(fmt.Sprintf("%s:%d", config.Host, config.Port), server)
 
 	if err != nil {
-		yamlink.Logger.Error("Failed while starting server", "error", err)
+		waypoint.Logger.Error("Failed while starting server", "error", err)
 		os.Exit(1)
 	}
 }
