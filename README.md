@@ -11,7 +11,7 @@ A fast, lightweight URL mapping and redirection system that dynamically manages 
 [![Go Report Card](https://goreportcard.com/badge/github.com/NishantJoshi00/waypoint)](https://goreportcard.com/report/github.com/NishantJoshi00/waypoint)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
-[![asciicast](https://asciinema.org/a/vmPkgMpJbqfnVwiliutXswU92.svg)](https://asciinema.org/a/vmPkgMpJbqfnVwiliutXswU92)
+[![asciicast](https://asciinema.org/a/59AwqH1WoraafCo3Ppsz0iT9R.svg)](https://asciinema.org/a/59AwqH1WoraafCo3Ppsz0iT9R)
 
 ## Features
 
