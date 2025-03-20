@@ -1,4 +1,4 @@
-package yamlink
+package waypoint
 
 import (
 	"gopkg.in/yaml.v3"

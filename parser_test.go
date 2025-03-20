@@ -1,10 +1,9 @@
-package yamlink_test
+package waypoint_test
 
-import (
-	"strings"
+import ( "strings"
 	"testing"
 
-	"github.com/NishantJoshi00/yamlink"
+	"github.com/NishantJoshi00/waypoint"
 )
 
 func TestDepth1Parse(t *testing.T) {
@@ -13,7 +12,7 @@ func TestDepth1Parse(t *testing.T) {
   key2: value2
   `
 
-	m, err := yamlink.ParseYaml(strings.NewReader(data))
+	m, err := waypoint.ParseYaml(strings.NewReader(data))
 
 	if err != nil {
 		t.Errorf("Error parsing yaml: %v", err)
@@ -35,13 +34,13 @@ func TestPathDepth1(t *testing.T) {
   key1: example.com
   `
 
-	m, err := yamlink.ParseYaml(strings.NewReader(table))
+	m, err := waypoint.ParseYaml(strings.NewReader(table))
 
 	if err != nil {
 		t.Errorf("Error parsing yaml: %v", err)
 	}
 
-	val, err := yamlink.PathLookup("key1", m)
+	val, err := waypoint.PathLookup("key1", m)
 
 	if err != nil {
 		t.Errorf("Error looking up path: %v", err)
@@ -58,13 +57,13 @@ func TestPathDepth2Map(t *testing.T) {
     key2: example.com
   `
 
-	m, err := yamlink.ParseYaml(strings.NewReader(table))
+	m, err := waypoint.ParseYaml(strings.NewReader(table))
 
 	if err != nil {
 		t.Errorf("Error parsing yaml: %v", err)
 	}
 
-	val, err := yamlink.PathLookup("key1/key2", m)
+	val, err := waypoint.PathLookup("key1/key2", m)
 
 	if err != nil {
 		t.Errorf("Error looking up path: %v", err)
@@ -81,13 +80,13 @@ func TestPathDepth2Array(t *testing.T) {
     - example.com
   `
 
-	m, err := yamlink.ParseYaml(strings.NewReader(table))
+	m, err := waypoint.ParseYaml(strings.NewReader(table))
 
 	if err != nil {
 		t.Errorf("Error parsing yaml: %v", err)
 	}
 
-	val, err := yamlink.PathLookup("key1/0", m)
+	val, err := waypoint.PathLookup("key1/0", m)
 
 	if err != nil {
 		t.Errorf("Error looking up path: %v", err)
@@ -105,13 +104,13 @@ func TestPathDepth3ArrayMap(t *testing.T) {
     - key2: example.com
   `
 
-	m, err := yamlink.ParseYaml(strings.NewReader(table))
+	m, err := waypoint.ParseYaml(strings.NewReader(table))
 
 	if err != nil {
 		t.Errorf("Error parsing yaml: %v", err)
 	}
 
-	val, err := yamlink.PathLookup("key1/1/key2", m)
+	val, err := waypoint.PathLookup("key1/1/key2", m)
 
 	if err != nil {
 		t.Errorf("Error looking up path: %v", err)
@@ -129,13 +128,13 @@ func TestUnknownPathDepth1(t *testing.T) {
     - key2: example.com
   `
 
-	m, err := yamlink.ParseYaml(strings.NewReader(table))
+	m, err := waypoint.ParseYaml(strings.NewReader(table))
 
 	if err != nil {
 		t.Errorf("Error parsing yaml: %v", err)
 	}
 
-	_, err = yamlink.PathLookup("key1/1/key3", m)
+	_, err = waypoint.PathLookup("key1/1/key3", m)
 
 	if err == nil {
 		t.Errorf("Expected error, got nil")
@@ -149,13 +148,13 @@ func TestUnknownPathDepth2(t *testing.T) {
     - key2: example.com
   `
 
-	m, err := yamlink.ParseYaml(strings.NewReader(table))
+	m, err := waypoint.ParseYaml(strings.NewReader(table))
 
 	if err != nil {
 		t.Errorf("Error parsing yaml: %v", err)
 	}
 
-	_, err = yamlink.PathLookup("key1/2/key2", m)
+	_, err = waypoint.PathLookup("key1/2/key2", m)
 
 	if err == nil {
 		t.Errorf("Expected error, got nil")

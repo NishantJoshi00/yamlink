@@ -1,7 +1,7 @@
 #!/bin/zsh
 
-# first args is the path of the `shelinks` executable
-# second args is the path of the `shelinks` config file
+# first args is the path of the `wayshell` executable
+# second args is the path of the `wayshell` config file
 
 __ERROR=false
 
@@ -22,7 +22,7 @@ if [[ $__ERROR == false ]]; then
   EXE=$1
   CONFIG=$2
   
-  shelinks-expr () {
+  wayshell-expr () {
     if [[ "$BUFFER" == "s/"* ]]; then
   
       # here the query is `/.*` e.g ( if the line looks like `s/hello/world` then the query is `/hello/world` )
@@ -34,7 +34,7 @@ if [[ $__ERROR == false ]]; then
     zle .accept-line
   }
   
-  zle -N accept-line shelinks-expr
+  zle -N accept-line wayshell-expr
 fi
 
 

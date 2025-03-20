@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"os"
 
-	"github.com/NishantJoshi00/yamlink"
+	"github.com/NishantJoshi00/waypoint"
 )
 
 func main() {
@@ -24,13 +24,13 @@ func main() {
 
 	query := os.Args[1]
 
-	loaded_config, err := yamlink.ReadFile(config_file)
+	loaded_config, err := waypoint.ReadFile(config_file)
 
 	if err != nil {
 		panic(err)
 	}
 
-	resolve, err := yamlink.PathLookup(query, loaded_config)
+	resolve, err := waypoint.PathLookup(query, loaded_config)
 
 	if err != nil {
 		panic(err)

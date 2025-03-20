@@ -1,4 +1,4 @@
-module github.com/NishantJoshi00/yamlink
+module github.com/NishantJoshi00/waypoint
 
 go 1.22.4
 
