@@ -1,4 +1,0 @@
-host: localhost
-port: 8000
-map_file: mapping.yaml
-refresh_interval: 5
