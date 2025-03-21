@@ -43,6 +43,7 @@ func main() {
 	config_file, err1 := os.LookupEnv("CONFIG_FILE")
 
 	if err1 != true {
+        waypoint.Logger.Error("Failed while loading config file", "error", "CONFIG_FILE not set")
 		os.Exit(1)
 	}
 

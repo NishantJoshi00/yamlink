@@ -42,18 +42,38 @@ func PathLookup(path string, m interface{}) (string, error) {
 
 	keys := strings.Split(path, "/")
 
-	if keys[len(keys)-1] == "" {
+	if len(keys) > 0 && keys[len(keys)-1] == "" {
 		keys = keys[:len(keys)-1]
 	}
 
-	return lookup(keys[1:], m)
+	if len(keys) > 0 && keys[0] == "" {
+		keys = keys[1:]
+	}
+
+	if len(keys) == 0 {
+		return "", os.ErrNotExist
+	}
+
+	return lookup(keys, m)
 }
 
 func lookup(key []string, lookupTree interface{}) (string, error) {
 	if _, err := strconv.Atoi(key[0]); err == nil {
-		return indexLookup(key, lookupTree.([]interface{}))
+		arr, ok := lookupTree.([]interface{})
+
+		if !ok {
+			return "", os.ErrNotExist
+		}
+
+		return indexLookup(key, arr)
 	} else {
-		return namedLookup(key, lookupTree.(map[string]interface{}))
+		m, ok := lookupTree.(map[string]interface{})
+
+		if !ok {
+			return "", os.ErrNotExist
+		}
+
+		return namedLookup(key, m)
 	}
 }
 
